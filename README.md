@@ -1,7 +1,7 @@
 # NFLTeams
 A wordpress plugin created to prove ability to code a solution to a problem.
 
-## Dependicies
+## Dependencies
 * [jQuery](https://jquery.com/)
 * [Flexbox SCSS Mixins](https://gist.github.com/superfine/b8d09752a67b4e2f224bb34cb5ca9f94)
 * [Football SVG](https://commons.wikimedia.org/wiki/File:Football_(11390)_-_The_Noun_Project.svg)

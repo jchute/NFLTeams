@@ -3,7 +3,8 @@
 function nflteams_shortcode( $parameter ) {
 
     // Get options and parameters
-    $APIKEY = esc_attr( get_option( 'nflteams-apikey' ) );
+    $apikey = esc_attr( get_option( 'nflteams-apikey' ) );
+    $apiurl = 'https://delivery.chalk247.com/team_list/NFL.JSON?api_key=' . $apikey;
 
     extract( shortcode_atts( array(
 
@@ -15,8 +16,8 @@ function nflteams_shortcode( $parameter ) {
     $sort = strtolower( esc_attr( $sort ) );
 
     // Check if API Key has been set
-    if ( !$APIKEY ) {
-        return '<p>API Key not set within NFL Teams page.</p>';
+    if ( !$apikey ) {
+        return '<p>API Key not set within <a href="' . admin_url( 'admin.php?page=nflteams' ) . '">NFL Teams page</a>.</p>';
     }
 
     // Check if sort parameter was set to a known value
@@ -28,7 +29,7 @@ function nflteams_shortcode( $parameter ) {
     if ( false === get_transient( 'nflteams-data' ) ) {
 
         // Get JSON data from third party source
-        $fetch = wp_remote_get( 'https://delivery.chalk247.com/team_list/NFL.JSON?api_key=' . $APIKEY );
+        $fetch = wp_remote_get( $apiurl );
 
         // Cache the data to limit server requests
         set_transient( 'nflteams-data', $fetch['body'], DAY_IN_SECONDS );
@@ -37,6 +38,15 @@ function nflteams_shortcode( $parameter ) {
 
     // Receive transient data
     $data = json_decode( get_transient( 'nflteams-data' ) );
+
+    // Check if we received an error
+    if ( isset( $data->results->error ) ) {
+
+        delete_transient( 'nflteams-data' );
+
+        return '<p>Something went wrong!<br>' . $data->results->error . '</p>';
+
+    }
 
     $teams = $data->results->data->team;
 

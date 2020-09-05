@@ -1,0 +1,133 @@
+.nflteams {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  -webkit-justify-content: space-between;
+  -moz-justify-content: space-between;
+  justify-content: space-between;
+  -webkit-flex-wrap: wrap;
+  -moz-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  box-sizing: border-box; }
+  .nflteams * {
+    box-sizing: inherit; }
+  .nflteams h3 {
+    -webkit-flex-basis: 100%;
+    -moz-flex-basis: 100%;
+    -ms-flex-preferred-size: 100%;
+    flex-basis: 100%; }
+  .nflteams p {
+    margin: 0; }
+  .nflteams .nflteams-card {
+    -webkit-flex-basis: calc( 50% - 0.5em);
+    -moz-flex-basis: calc( 50% - 0.5em);
+    -ms-flex-preferred-size: calc( 50% - 0.5em);
+    flex-basis: calc( 50% - 0.5em);
+    width: 100%;
+    margin: 0.25em;
+    perspective: 1000px; }
+    .nflteams .nflteams-card:hover .inner {
+      box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.75); }
+      @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+        .nflteams .nflteams-card:hover .inner {
+          box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); } }
+    .nflteams .nflteams-card.flip .inner {
+      transform: rotateX(180deg); }
+      @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+        .nflteams .nflteams-card.flip .inner {
+          transform: none; } }
+  .nflteams.sort-division .nflteams-card, .nflteams.sort-conference .nflteams-card {
+    display: none; }
+    .nflteams.sort-division .nflteams-card.show, .nflteams.sort-conference .nflteams-card.show {
+      display: block; }
+  .nflteams .inner {
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr;
+    grid-template-areas: "face";
+    transform-style: preserve-3d;
+    transition: transform 1s ease-in-out, box-shadow 500ms ease-in-out;
+    padding: 0.5em;
+    background-color: #FFFFFF;
+    border: 1px solid;
+    border-radius: 5px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    cursor: pointer; }
+    @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+      .nflteams .inner {
+        cursor: inherit; } }
+  .nflteams .face {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -moz-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    grid-area: face;
+    background-color: inherit;
+    transform: rotateX(0);
+    backface-visibility: hidden; }
+    .nflteams .face:nth-child(2) {
+      transform: rotateX(180deg); }
+      @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+        .nflteams .face:nth-child(2) {
+          transform: none; } }
+  .nflteams .nflteams-title {
+    display: none; }
+    .nflteams .nflteams-title.show {
+      display: block; }
+  .nflteams .team-name {
+    margin: auto;
+    font-size: 1.15em;
+    font-weight: bolder;
+    text-align: center; }
+  .nflteams .controls {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    -webkit-justify-content: space-between;
+    -moz-justify-content: space-between;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    -moz-align-items: center;
+    align-items: center;
+    -webkit-flex-wrap: wrap;
+    -moz-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    width: 100%; }
+  .nflteams .nflteams-button {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1 1 calc( 25% - 1em);
+    -moz-box-flex: 1;
+    -moz-flex: 1 1 calc( 25% - 1em);
+    -ms-flex: 1 1 calc( 25% - 1em);
+    flex: 1 1 calc( 25% - 1em);
+    margin: 0.25em;
+    padding: 0.25em;
+    color: #111111;
+    border: 1px solid;
+    border-radius: 5px;
+    background-color: #FFFFFF;
+    text-align: center;
+    text-decoration: none;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    transition: box-shadow 500ms ease-in-out; }
+    .nflteams .nflteams-button:hover {
+      box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.75); }

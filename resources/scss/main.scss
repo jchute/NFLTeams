@@ -1,0 +1,159 @@
+// Color variables
+$color1: #FFFFFF;
+$color2: #111111;
+
+// Mixin Imports
+@import 'flexbox';
+@import 'mixins';
+
+.nflteams {
+    @include flexbox;
+    @include justify-content( space-between );
+    @include flex-wrap ( wrap );
+    box-sizing: border-box;
+
+    * {
+        box-sizing: inherit;
+    }
+
+    // Category titles to span full width
+    h3 {
+        @include flex-basis( 100% );
+    }
+
+    // Basic styles
+    p {
+        margin: 0;
+    }
+
+    // Basic styles
+    .nflteams-card {
+        @include flex-basis( calc( 50% - 0.5em) );
+        width: 100%;
+        margin: 0.25em;
+        perspective: 1000px; // Required for 3d effect on flipcards
+
+        // Flipcard hover
+        &:hover {
+            .inner {
+                box-shadow: 1px 1px 10px rgba( 0, 0, 0, 0.75 );
+
+                @include ie {
+                    // IE doesn't support grid. Remove flip card ability.
+                    box-shadow: 1px 1px 3px rgba( 0, 0, 0, 0.5 );
+                }
+            }
+        }
+
+        // Flipcard effect
+        &.flip {
+            .inner {
+                transform: rotateX( 180deg );
+
+                @include ie {
+                    // IE doesn't support grid. Remove flip card ability.
+                    transform: none;
+                }
+            }
+        }
+    }
+
+    // Styles for category switcher
+    &.sort-division,
+    &.sort-conference {
+        .nflteams-card {
+            display: none;
+
+            &.show {
+                display: block;
+            }
+        }
+    }
+
+    // Apply grid to inner div to break out of flexbox settings from parent. Grid used to force elements to overlay the same area, while allowing element size to stay relevant.
+    .inner {
+        display: grid;
+        grid-template-rows: 1fr;
+        grid-template-columns: 1fr;
+        grid-template-areas: "face";
+        transform-style: preserve-3d;
+        transition: transform 1s ease-in-out, box-shadow 500ms ease-in-out;
+
+        // Basic styles for cards
+        padding: 0.5em;
+        background-color: $color1;
+        border: 1px solid;
+        border-radius: 5px;
+        box-shadow: 1px 1px 3px rgba( 0, 0, 0, 0.5 );
+        cursor: pointer;
+
+        @include ie {
+            // IE doesn't support grid. Remove flip card ability.
+            cursor: inherit;
+        }
+    }
+
+    // Flip card sides
+    .face {
+        @include flexbox;
+        @include flex-direction( column );
+        grid-area: face;
+        background-color: inherit;
+        transform: rotateX( 0 );
+        backface-visibility: hidden;
+
+        // The second face is the back side.
+        &:nth-child( 2 ) {
+            transform: rotateX( 180deg );
+
+            @include ie {
+                // IE doesn't support grid. Remove flip card ability.
+                transform: none;
+            }
+        }
+    }
+
+    // Styles for category switcher
+    .nflteams-title {
+        display: none;
+
+        &.show {
+            display: block;
+        }
+    }
+
+    // Enlarge and center team name
+    .team-name {
+        margin: auto;
+        font-size: 1.15em;
+        font-weight: bolder;
+        text-align: center;
+    }
+
+    // Basic styles for buttons
+    .controls {
+        @include flexbox;
+        @include justify-content( space-between );
+        @include align-items( center );
+        @include flex-wrap( wrap );
+        width: 100%;
+    }
+
+    .nflteams-button {
+        @include flex( 1 1 calc( 25% - 1em ) );
+        margin: 0.25em;
+        padding: 0.25em;
+        color: $color2;
+        border: 1px solid;
+        border-radius: 5px;
+        background-color: $color1;
+        text-align: center;
+        text-decoration: none;
+        box-shadow: 1px 1px 3px rgba( 0, 0, 0, 0.5 );
+        transition: box-shadow 500ms ease-in-out;
+
+        &:hover {
+            box-shadow: 1px 1px 10px rgba( 0, 0, 0, 0.75 );
+        }
+    }
+}

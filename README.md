@@ -32,4 +32,4 @@ I've decided to allow ACME Sports to have the most control over the display of t
 
 Where the API provided limited information, I utilized what I could to ensure that viewers could get the maximum information while allowing the design to retain a minimal look.
 
-I decided to take this coding opportunity to highlight my ability with bulding for WordPress and highlight my skill in 4 major categories, CSS/SCSS, HTML, PHP, and JS/jQuery. A plugin was the obvious choice to succeed in this task.
+I decided to take this coding opportunity to highlight my ability with building for WordPress and highlight my skill in 4 major categories, CSS/SCSS, HTML, PHP, and JS/jQuery. A plugin was the obvious choice to succeed in this task.
